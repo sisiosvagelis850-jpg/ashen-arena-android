@@ -36,6 +36,8 @@ jobs:
           keytool -genkeypair -v -keystore /github/home/.android/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
       - name: Validate project
         run: godot --headless --path godot --editor --quit
+      - name: Install Android build template
+        run: godot --headless --path godot --install-android-build-template
       - name: Build debug APK
         run: |
           mkdir -p build/android
