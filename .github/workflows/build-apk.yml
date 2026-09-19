@@ -30,7 +30,7 @@ jobs:
         run: |
           yes | sdkmanager --licenses >/dev/null || true
           sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools"
-      - name: Validate project
+      - name: Create Android debug key\n        run: |\n          mkdir -p /github/home/.android\n          keytool -genkeypair -v -keystore /github/home/.android/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -validity 10000 -dname \"CN=Android Debug,O=Android,C=US\"\n      - name: Validate project
         run: godot --headless --path godot --editor --quit
       - name: Build debug APK
         run: |
