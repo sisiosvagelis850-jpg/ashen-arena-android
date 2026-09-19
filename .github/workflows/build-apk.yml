@@ -26,7 +26,7 @@ jobs:
           mkdir -p ~/.config
           mv /root/.config/godot ~/.config/godot
           mv /root/.local/share/godot/export_templates/4.3.stable ~/.local/share/godot/export_templates/4.3.stable
-      - name: Validate project
+      - name: Install current Android SDK\n        run: |\n          yes | sdkmanager --licenses >/dev/null || true\n          sdkmanager \"platforms;android-35\" \"build-tools;35.0.0\" \"platform-tools\"\n      - name: Validate project
         run: godot --headless --path godot --editor --quit
       - name: Build debug APK
         run: |
